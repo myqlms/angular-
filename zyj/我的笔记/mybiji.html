@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app='mynote'>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angularmin.js"></script>
+	</head>
+	<body>
+		<div ng-controller="myNoteCtrl">
+
+			<h2>我的笔记</h2>
+			
+			<p><textarea ng-model="message" cols="40" rows="10"></textarea></p>
+			
+			<p>
+			<button ng-click="save()">保存</button>
+			<button ng-click="clear()">清除</button>
+			</p>
+			
+			<p>剩余的字符数: <span ng-bind="left()"></span></p>
+		</div>
+	</body>
+	<script>
+		var app = angular.module('mynote',[]);
+		app.controller('myNoteCtrl',['$scope',function($scope){
+			$scope.message = '';
+			$scope.left = function(){
+				return 100-$scope.message.length;
+			}
+			
+			$scope.save = function(){
+				if($scope.message==''){
+					alert('没有您要保存的内容')
+				}else{
+					alert('保存成功');
+				}
+			}
+			
+			$scope.clear = function(){
+				$scope.message = '';
+			}
+		}])
+		
+	</script>
+</html>

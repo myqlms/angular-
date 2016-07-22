@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.0.js"></script>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" id="txt1" onkeyup="showHint(this.value)" />
+		</form>
+		<p>suggest:<span id="txtHint"></span></p>
+	</body>
+	<script>
+		//jQuery(function($){});
+			function showHint(str){
+				$.post({
+					type:"get",
+					url:"http://127.0.0.1/zyj/php1.php",//?abs=+str,
+					data:{abs:str},
+					async:true,
+					success:function(resurt){
+						$('span').html(resurt);
+					}
+				});
+			}
+			
+		
+		
+	</script>
+</html>
